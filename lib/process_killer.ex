@@ -1,6 +1,6 @@
 defmodule ProcessKiller do
 
-  def loop(count) do
+  def loop(count, stuff, stuff2) do
     receive do
       {sender_pid, :count} ->
         send(sender_pid, {:ok, count})
@@ -11,6 +11,6 @@ defmodule ProcessKiller do
       _ ->
         IO.puts "#{inspect self()}don't know how to process this message"
     end
-    loop(count + 1)
+    loop(count + 1, stuff, stuff2)
   end
 end
